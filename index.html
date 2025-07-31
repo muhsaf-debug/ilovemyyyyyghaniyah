@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Someone Special 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top left, #ffe6f0, #fff0f6);
+      overflow: hidden;
+    }
+
+    .typing {
+      font-size: 2em;
+      color: #d63384;
+      text-align: center;
+      margin-top: 20vh;
+      min-height: 3em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #d63384;
+      width: 22ch;
+      animation: typing 3s steps(22), blink 0.7s step-end infinite alternate;
+      margin-bottom: 40px;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 22ch; }
+    }
+
+    @keyframes blink {
+      from { border-color: transparent; }
+      to { border-color: #d63384; }
+    }
+
+    .form {
+      text-align: center;
+    }
+
+    input {
+      padding: 12px 18px;
+      font-size: 1em;
+      border: 2px solid #ff99c8;
+      border-radius: 8px;
+      width: 250px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #ff66a6;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3385;
+    }
+
+    .error {
+      color: #d63333;
+      margin-top: 15px;
+      font-size: 0.95em;
+    }
+
+    /* Heartfall animation */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      color: #ff6b81;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Typing Animation Title -->
+  <div class="typing">Hey you! I made this for someone special...</div>
+
+  <!-- Input Form -->
+  <div class="form">
+    <input type="text" id="nameInput" placeholder="Enter your name..."><br>
+    <button onclick="checkName()">Enter</button>
+    <div id="errorMessage" class="error"></div>
+  </div>
+
+  <!-- Heartfall Script -->
+  <script>
+    // Check name input
+    function checkName() {
+      const name = document.getElementById("nameInput").value.trim().toLowerCase();
+      const errorDiv = document.getElementById("errorMessage");
+
+      if (name === "ghaniyah") {
+        window.location.href = "love.html";
+      } else {
+        errorDiv.textContent = "Oops! This page is only for Ghaniyah 💌";
+      }
+    }
+
+    // Create floating hearts
+    const hearts = ["💖", "💕", "💘", "❤️"];
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      heart.style.fontSize = (14 + Math.random() * 10) + "px";
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
