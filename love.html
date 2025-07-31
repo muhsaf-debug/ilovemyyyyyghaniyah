@@ -5,43 +5,46 @@
   <title>To Ghaniyah 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      background-color: #fff0f6;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    html, body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top left, #ffe6f0, #fff0f6);
+      overflow-x: hidden;
       color: #333;
-      line-height: 1.7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    .container {
-      background-color: #ffffff;
-      max-width: 800px;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      margin-top: 30px;
-    }
-
-    h1 {
-      text-align: center;
+    .typing {
+      font-size: 2em;
       color: #d63384;
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-top: 20vh;
+      min-height: 3em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #d63384;
+      width: 20ch;
+      animation: typing 3s steps(20), blink 0.7s step-end infinite alternate;
+      margin-bottom: 40px;
     }
 
-    .heart {
-      animation: pulse 1.5s infinite;
-      display: inline-block;
-      color: #ff6b81;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 20ch; }
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    @keyframes blink {
+      from { border-color: transparent; }
+      to { border-color: #d63384; }
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      font-size: 1.1em;
+      line-height: 1.8;
     }
 
     .signature {
@@ -58,14 +61,35 @@
       font-size: 0.9em;
       color: #aaa;
     }
+
+    /* Heartfall animation */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      color: #ff6b81;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>To My Love, Ghaniyah <span class="heart">💖</span></h1>
+  <div class="typing">To My Love, Ghaniyah 💖</div>
 
-  <div class="container">
-    <p>Meeting you was something I never expected but everything I needed, and every day since that first message came across the screen, my life has shifted in ways I didn’t know were possible. Before you, things felt so dull and often meaningless, but the moment you came into my world  even through a screen  the colors got brighter, time began to matter, and I started to wake up with a purpose.</p>
+  <div class="content">
+    <p>Meeting you was something I never expected but everything I needed, and every day since that first message came across the screen, my life has shifted in ways I didn’t know were possible. Before you, things felt so dull and often meaningless, but the moment you came into my world even through a screen  the colors got brighter, time began to matter, and I started to wake up with a purpose.</p>
 
     <p>I didn’t think love like this existed outside of books until you showed me it was real and beautiful, even in a digital form. These past 161 days have been the most meaningful days of my entire life, and I've improved a lot. I’ve learned that love doesn’t need to be physical to be real; it just needs to be honest and full of intention. And that’s exactly what we’ve had  real moments, real conversations, real laughter.</p>
 
@@ -87,8 +111,22 @@
   </div>
 
   <footer>
-    Made with love for Girlfriend’s Day, 2025 💘
+    Made with love — Girlfriend’s Day, 2025 💘
   </footer>
+
+  <!-- Floating Hearts -->
+  <script>
+    const hearts = ["💖", "💕", "💘", "❤️"];
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      heart.style.fontSize = (14 + Math.random() * 10) + "px";
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      document.body.appendChild(heart);
+    }
+  </script>
 
 </body>
 </html>
